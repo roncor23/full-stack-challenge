@@ -19,8 +19,19 @@ class Challenge
      */
     public function getRecords() 
     {
-        // TODO
-        return array();
+        $pdo = $this->getPdoBuilder()->getPdo();
+    
+        $query = "
+            SELECT b.id, b.name,
+                   d.first_name, d.last_name, b.registered_address, b.registration_number
+            FROM businesses AS b
+            JOIN director_businesses AS db ON b.id = db.business_id
+            JOIN directors AS d ON db.director_id = d.id
+        ";
+        
+        $stmt = $pdo->query($query);
+        
+        return $stmt->fetchAll();
     }
 
     /**
@@ -30,8 +41,12 @@ class Challenge
      */
     public function getDirectorRecords() 
     {
-        // TODO
-        return array();
+        $pdo = $this->getPdoBuilder()->getPdo();
+    
+        $query = "SELECT * FROM directors";
+        $stmt = $pdo->query($query);
+        
+        return $stmt->fetchAll();
     }
 
     /**
@@ -42,8 +57,14 @@ class Challenge
      */
     public function getSingleDirectorRecord($id)
     {
-        // TODO
-        return array();
+        $pdo = $this->getPdoBuilder()->getPdo();
+    
+        $query = "SELECT * FROM directors WHERE id = :id";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
+        $stmt->execute();
+        
+        return $stmt->fetch();
     }
 
     /**
@@ -53,8 +74,12 @@ class Challenge
      */
     public function getBusinessRecords() 
     {
-        // TODO
-        return array();
+        $pdo = $this->getPdoBuilder()->getPdo();
+    
+        $query = "SELECT * FROM businesses";
+        $stmt = $pdo->query($query);
+        
+        return $stmt->fetchAll();
     }
 
     /**
@@ -65,8 +90,15 @@ class Challenge
      */
     public function getSingleBusinessRecord($id) 
     {
-        // TODO
-        return array();
+
+        $pdo = $this->getPdoBuilder()->getPdo();
+    
+        $query = "SELECT * FROM businesses WHERE id = :id";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
+        $stmt->execute();
+        
+        return $stmt->fetch();
     }
 
     /**
@@ -77,8 +109,14 @@ class Challenge
      */
     public function getBusinessesRegisteredInYear($year)
     {
-        // TODO
-        return array();
+        $pdo = $this->getPdoBuilder()->getPdo();
+    
+        $query = "SELECT * FROM businesses WHERE YEAR(registration_date) = :year";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':year', $year, \PDO::PARAM_INT);
+        $stmt->execute();
+        
+        return $stmt->fetchAll();
     }
 
     /**
@@ -88,8 +126,18 @@ class Challenge
      */
     public function getLast100Records()
     {
-        // TODO
-        return array();
+        $pdo = $this->getPdoBuilder()->getPdo();
+    
+        $query = "
+            SELECT id, first_name, last_name, occupation, date_of_birth
+            FROM directors
+            ORDER BY id DESC
+            LIMIT 100
+        ";
+        
+        $stmt = $pdo->query($query);
+        
+        return $stmt->fetchAll();
     }
 
     /**
@@ -106,8 +154,18 @@ class Challenge
      */
     public function getBusinessNameWithDirectorFullName()
     {
-        // TODO
-        return array();
+        $pdo = $this->getPdoBuilder()->getPdo();
+    
+        $query = "
+            SELECT b.name AS business_name, CONCAT(d.first_name, ' ', d.last_name) AS director_name
+            FROM businesses AS b
+            JOIN director_businesses AS db ON b.id = db.business_id
+            JOIN directors AS d ON db.director_id = d.id
+        ";
+        
+        $stmt = $pdo->query($query);
+        
+        return $stmt->fetchAll();
     }
 
     /**

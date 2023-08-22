@@ -1,22 +1,41 @@
-<table>
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Director Name</th>
-            <th>Business Name</th>
-            <th>Business Address</th>
-            <th>Business Registration #</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach($records as $record): ?>
-            <tr>
-                <td><?= $record['id'] ?></td>
-                <td><?= $record['first_name'] . ' ' . $record['last_name'] ?></td>
-                <td><?= $record['name'] ?></td>
-                <td><?= $record['registered_address'] ?></td>
-                <td><?= $record['registration_number'] ?></td>
-            </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Full Stack Challenge</title>
+
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- DataTable & JQuery Libraries-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <!-- SweetAlert2 Libraries -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+
+    <!-- JS -->
+    <script src="challenge.js"></script>
+
+</head>
+<body>
+<!-- Main Content -->
+<div class="main">
+    <button class="button button-primary" id="directorBtn">View Directors Record</button>  
+    <button class="button button-primary" id="businessBtn">View Business Record</button>  
+    <button class="button button-primary" id="homeBtn">Back to Home</button>  
+
+    <!-- Your content goes here -->
+    <?php
+        include 'allrecords.phtml';
+        include 'director.phtml';
+        include 'business.phtml'; 
+    ?>
+    
+    <button class="button button-success" id="last100RecordBtn">Get Last 100 Records</button>  
+</div>
+
+</body>
+</html>
+

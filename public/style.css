@@ -1,0 +1,96 @@
+        /* DataTables styling */
+        .dataTable thead th {
+            font-weight: bold;
+            text-align: left;
+        }
+
+        /* styles.css */
+        .table-container {
+            margin-top: 20px;
+        }
+
+        .custom-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            padding-top: 5px;
+        }
+
+        .custom-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .custom-table th,
+        .custom-table td {
+            padding: 12px 15px;
+        }
+
+        .custom-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .custom-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .custom-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+
+        .custom-table tbody tr.active-row {
+            font-weight: bold;
+            color: #009879;
+        }
+
+        .main {
+            padding: 40px;
+        }
+
+        /* Basic Button Styles */
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .button-primary {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .button-secondary {
+        background-color: #6c757d;
+        color: #fff;
+    }
+
+    .button-success {
+        background-color: #28a745;
+        color: #fff;
+    }
+
+    .button-danger {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    /* Button Hover Effects */
+    .button:hover {
+        opacity: 0.8;
+    }
+
+    #year {
+        width: 180px;
+        height: 20px;
+    }

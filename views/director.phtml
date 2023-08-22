@@ -1,0 +1,27 @@
+<div class="table-container" id="director_records">
+    <h3>Director Records</h3> 
+        <table class="custom-table dataTable">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Director Name</th>
+                    <th>Occupation</th>
+                    <th>Date of Birth</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($director_records as $record): ?>
+                    <tr>
+                        <td><?= $record['id'] ?></td>
+                        <td><?= $record['first_name'] . ' ' . $record['last_name'] ?></td>
+                        <td><?= $record['occupation'] ?></td>
+                        <td><?= $record['date_of_birth'] ?></td>
+                        <td class="get-business" data-business-id="<?= $record['id'] ?>">
+                            <button class="button button-secondary">Business Info</button>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+</div>

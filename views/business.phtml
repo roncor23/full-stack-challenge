@@ -1,0 +1,29 @@
+<div class="table-container" id="business_records">
+    <h3>Business Records</h3> <span>Registered Year: <input type="number" id="year" placeholder="search registered year"/></span>
+        <table class="custom-table dataTable">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Register Address</th>
+                    <th>Registration Date</th>
+                    <th>Registration Number</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($business_records as $record): ?>
+                    <tr>
+                        <td><?= $record['id'] ?></td>
+                        <td><?= $record['name'] ?></td>
+                        <td><?= $record['registered_address'] ?></td>
+                        <td><?= $record['registration_date'] ?></td>
+                        <td><?= $record['registration_number'] ?></td>
+                        <td class="get-director" data-director-id="<?= $record['id'] ?>">
+                            <button class="button button-secondary">Director Info</button>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+</div>
